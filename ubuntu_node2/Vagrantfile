@@ -1,0 +1,30 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+PUBLIC_KEY_PATH = '/home/pyae-aung-zaw/pov-vagrant/ubuntu_node2/.ssh/id_rsa'.freeze
+Vagrant.configure("2") do |config|
+
+  config.vm.define "ubuntu_node2" do |vm1|
+    # config.ssh.private_key_path = "/home/pyae-aung-zaw/vagrantboxes/devbox01/.ssh/devbox01_rsa"
+    # config.ssh.forward_agent = true
+    # config.ssh.username = "vagrant"
+    # config.ssh.password = "vagrant"
+    vm1.vm.hostname = "ubuntu-node2"
+    vm1.vm.box = "bento/ubuntu-24.04"
+    vm1.vm.synced_folder ".", "/home/vagrant/", disabled: true
+    vm1.vm.provider "virtualbox" do |vb|
+      vb.name = "ubuntu_node2"
+    end
+
+    config.vm.provision 'shell' do |shell|
+      shell.inline = <<~DOC
+        echo '#{IO.read(PUBLIC_KEY_PATH)}' >> /home/vagrant/.ssh/authorized_keys
+      DOC
+    end
+  end
+end
+
+
+# We set up one box, without any networking options
+# This will establish one Network interface 10.0.2.15 on the guest machine,
+# using NAT networking and a forwarding rule for incoming SSH traffic.

@@ -1,0 +1,12 @@
+# Vagrant
+**/.vagrant/
+
+# SSH keys
+**/.ssh/
+
+# VirtualBox
+*.vbox
+*.vbox-prev
+
+# Logs
+*.log
