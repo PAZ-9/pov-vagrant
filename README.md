@@ -45,8 +45,8 @@ The objective is to understand:
     │                                     │
     └─────────────────────────────────────┘
 ```
+<img width="912" height="869" alt="image" src="https://github.com/user-attachments/assets/e07ccc35-8cf4-4f06-b637-3f6c1ca79857" />
 
-![alt text](image.png)
 
 ---
 
